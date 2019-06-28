@@ -4,5 +4,34 @@
 <head>
   <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guess the pokemon!</title>
+  <title>Guess that pokemon!</title>
 </head>
+
+<body>
+  <h1>Guess that pokemon!</h1>
+
+  <h2>Type in a letter to guess the pokemon</h2>
+
+  <p>Your guess: <span id = "user-guess"></span></p>
+
+  <script>
+    var pokemon = "pikachu";
+    var docUserGuess = document.getElementById("user-guess");
+    var userGuess = [];
+
+    document.onkeyup = function(event) {
+      var userGuessKey = event.key.toLowerCase();
+
+      if (userGuessKey === "a" || userGuessKey === "b" || userGuessKey === "c" || userGuessKey === "d" || userGuessKey === "e" || userGuessKey === "f" || userGuessKey === "g" || userGuessKey ==="h" || userGuessKey === "i" || userGuessKey === "j" || userGuessKey === "k" || userGuessKey ==="l"|| userGuessKey === "m" || userGuessKey ==="n" || userGuessKey ==="o" || userGuessKey ==="p" || userGuessKey ==="q" || userGuessKey === "r" || userGuessKey ==="s" || userGuessKey ==="t"|| userGuessKey === "u" || userGuessKey ==="v" || userGuessKey ==="w" || userGuessKey ==="x" || userGuessKey ==="y" || userGuessKey ==="z") {
+        docUserGuess.textContent = userGuessKey;
+        userGuess.push(userGuessKey);
+        userGuess.forEach(function(str) {
+          console.log(str)
+        })
+      }
+
+    }
+
+  </script>
+
+</body>
