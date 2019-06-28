@@ -12,25 +12,74 @@
 
   <h2>Type in a letter to guess the pokemon</h2>
 
+  <h3><span id = "word-display"></span></h3>
+
   <p>Your guess: <span id = "user-guess"></span></p>
 
   <script>
-    var pokemon = "pikachu";
-    var docUserGuess = document.getElementById("user-guess");
-    var userGuess = [];
+    var pokemon = ["pikachu", "charizard", "bulbasaur", "eevee", "scyther"];
+    var docUserGuess = document.getElementById("user-guess"); //used to display the user guess
+    var docPokemonDisplay = document.getElementById("word-display") //used to display the pokemon
+    var userGuess = []; //used to log user guesses
+    var pokemonDisplay = [] //used to create the _ string to be displayed
+    var stringCheck
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var guessDup = false; //guessDup set to false
+
+    var pokemonWord = "pikachu";
+    
+    for (var i = 0; i < pokemonWord.length; i++) { //adds a _ for each letter in the pokemon name
+      pokemonDisplay.push("_");
+    }
+
+    docPokemonDisplay.textContent = pokemonDisplay;
+
 
     document.onkeyup = function(event) {
+
       var userGuessKey = event.key.toLowerCase();
 
-      if (userGuessKey === "a" || userGuessKey === "b" || userGuessKey === "c" || userGuessKey === "d" || userGuessKey === "e" || userGuessKey === "f" || userGuessKey === "g" || userGuessKey ==="h" || userGuessKey === "i" || userGuessKey === "j" || userGuessKey === "k" || userGuessKey ==="l"|| userGuessKey === "m" || userGuessKey ==="n" || userGuessKey ==="o" || userGuessKey ==="p" || userGuessKey ==="q" || userGuessKey === "r" || userGuessKey ==="s" || userGuessKey ==="t"|| userGuessKey === "u" || userGuessKey ==="v" || userGuessKey ==="w" || userGuessKey ==="x" || userGuessKey ==="y" || userGuessKey ==="z") {
-        docUserGuess.textContent = userGuessKey;
-        userGuess.push(userGuessKey);
-        userGuess.forEach(function(str) {
-          console.log(str)
-        })
-      }
+      alphabet.forEach(function(str) { //runs through the alphabet
+        
+        if (userGuessKey === str) { //checks to see if a letter of the alphabet has been chosen
 
-    }
+          for (var i = 0; i < userGuess.length; i++) { //checks to see if a letter has been duplicated
+            if (userGuess[i] === userGuessKey) {
+              guessDup = true;
+              break;
+            } else {
+              guessDup = false;
+            }
+          }
+
+          if (guessDup === false) { //if no duplicate chosen, continue
+
+            docUserGuess.textContent = userGuessKey;
+
+            userGuess.push(userGuessKey); //adds each letter to the guess log
+
+            for (var j = 0; j < pokemonWord.length; j++) {
+              if (userGuessKey === pokemonWord[j]) {
+                  stringCheck = pokemonWord.charAt(j);
+                  pokemonDisplay[j] = userGuessKey;
+                  docPokemonDisplay.textContent = pokemonDisplay;
+              }
+            }
+
+            // userGuess.forEach(function(str) {
+              
+            //   console.log(str)
+              
+            // })
+            
+          } else if (guessDup === true) { //if duplicate chosen, do not run
+              docUserGuess.textContent = userGuessKey + " already chosen.";
+          }
+        }
+
+      })
+
+}
 
   </script>
 
