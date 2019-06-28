@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    overflow: auto;
+    font-size: 50px;
+}
+
+.container {
+    margin: 0 auto;
+    display: block;
+    float: none;
+    position: relative;
+    width: 700px;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 20px;
+    text-align: center;
+}

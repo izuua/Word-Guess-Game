@@ -3,36 +3,55 @@
 
 <head>
   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guess that pokemon!</title>
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
 <body>
-  <h1>Guess that pokemon!</h1>
+  <div class="container">
+    <h1>Guess that pokemon!</h1>
 
-  <h2>Type in a letter to guess the pokemon</h2>
+    <h2>Type in a letter to guess the pokemon</h2>
 
-  <h3><span id = "word-display"></span></h3>
+    <h3><span id="word-display"></span></h3>
 
-  <p>Your guess: <span id = "user-guess"></span></p>
+    <p>Your guess: <span id="user-guess"></span></p>
+
+    <p>Wrong Guesses remaining: <span id="guess-remain">7</span></p>
+
+    <p>Letters chosen: <span id="guess-log"></span></p>
+  </div>
 
   <script>
     var pokemon = ["pikachu", "charizard", "bulbasaur", "eevee", "scyther"];
     var docUserGuess = document.getElementById("user-guess"); //used to display the user guess
     var docPokemonDisplay = document.getElementById("word-display") //used to display the pokemon
+    var guessLog = document.getElementById("guess-log");
+    var guessRemain = document.getElementById("guess-remain");
     var userGuess = []; //used to log user guesses
     var pokemonDisplay = [] //used to create the _ string to be displayed
-    var stringCheck
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var stringCheck = false;
     var guessDup = false; //guessDup set to false
+    var loserCounter = 0; //loserCounter set to 7 at start
 
-    var pokemonWord = "pikachu";
-    
-    for (var i = 0; i < pokemonWord.length; i++) { //adds a _ for each letter in the pokemon name
-      pokemonDisplay.push("_");
+    if (loserCounter === 0) {
+      
+      var pokeRan = Math.floor(Math.random() * 5); //randomizes a number between 0 and 4 to select a certain pokemon
+
+      var pokemonWord = pokemon[pokeRan];
+      
+      for (var i = 0; i < pokemonWord.length; i++) { //adds a _ for each letter in the pokemon name
+        pokemonDisplay.push("_");
+      }
+
+      docPokemonDisplay.textContent = pokemonDisplay.join(" ");
+
+      loserCounter = 7;
+
     }
-
-    docPokemonDisplay.textContent = pokemonDisplay;
 
 
     document.onkeyup = function(event) {
@@ -42,6 +61,8 @@
       alphabet.forEach(function(str) { //runs through the alphabet
         
         if (userGuessKey === str) { //checks to see if a letter of the alphabet has been chosen
+
+          stringCheck = false;
 
           for (var i = 0; i < userGuess.length; i++) { //checks to see if a letter has been duplicated
             if (userGuess[i] === userGuessKey) {
@@ -60,9 +81,9 @@
 
             for (var j = 0; j < pokemonWord.length; j++) {
               if (userGuessKey === pokemonWord[j]) {
-                  stringCheck = pokemonWord.charAt(j);
+                  stringCheck = true;
                   pokemonDisplay[j] = userGuessKey;
-                  docPokemonDisplay.textContent = pokemonDisplay;
+                  docPokemonDisplay.textContent = pokemonDisplay.join(" ");
               }
             }
 
@@ -74,9 +95,16 @@
             
           } else if (guessDup === true) { //if duplicate chosen, do not run
               docUserGuess.textContent = userGuessKey + " already chosen.";
+              stringCheck = true;
+          }
+
+          if (stringCheck === false) {
+              loserCounter--;
+              console.log(loserCounter);
           }
         }
-
+        guessRemain.textContent = loserCounter;
+        guessLog.textContent = userGuess.join(", ");
       })
 
 }
