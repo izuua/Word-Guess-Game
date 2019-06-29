@@ -36,12 +36,14 @@
     var stringCheck = false;
     var guessDup = false; //guessDup set to false
     var loserCounter = 0; //loserCounter set to 7 at start
+    var pokemonWord;
 
-    if (loserCounter === 0) {
+    //if (loserCounter === 0) {
       
       var pokeRan = Math.floor(Math.random() * 5); //randomizes a number between 0 and 4 to select a certain pokemon
 
       var pokemonWord = pokemon[pokeRan];
+      console.log(pokemonWord);
       
       for (var i = 0; i < pokemonWord.length; i++) { //adds a _ for each letter in the pokemon name
         pokemonDisplay.push("_");
@@ -51,10 +53,37 @@
 
       loserCounter = 7;
 
-    }
+      //console.log("If statement ran");
+
+    //}
 
 
     document.onkeyup = function(event) {
+
+      console.log(pokemonDisplay.join(""));
+      if (loserCounter === 0 || pokemonDisplay.join("") === pokemonWord) {
+      
+        var pokeRan = Math.floor(Math.random() * 5); //randomizes a number between 0 and 4 to select a certain pokemon
+        console.log("random " + pokeRan);
+
+        pokemonWord = pokemon[pokeRan];
+        console.log("pokemon" + pokemonWord);
+        
+        pokemonDisplay = [];
+
+        //pokemonWord = "scyther";
+
+        for (var i = 0; i < pokemonWord.length; i++) { //adds a _ for each letter in the pokemon name
+          pokemonDisplay.push("_");
+        }
+
+        docPokemonDisplay.textContent = pokemonDisplay.join(" ");
+
+        loserCounter = 7;
+
+        console.log("if statement ran");
+
+      } 
 
       var userGuessKey = event.key.toLowerCase();
 
@@ -79,6 +108,7 @@
 
             userGuess.push(userGuessKey); //adds each letter to the guess log
 
+            console.log(pokemonWord);
             for (var j = 0; j < pokemonWord.length; j++) {
               if (userGuessKey === pokemonWord[j]) {
                   stringCheck = true;
@@ -105,10 +135,11 @@
         }
         guessRemain.textContent = loserCounter;
         guessLog.textContent = userGuess.join(", ");
+
       })
 
+      
 }
-
   </script>
 
 </body>
