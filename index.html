@@ -25,7 +25,7 @@
   </div>
 
   <script>
-    var pokemon = ["pikachu", "charizard", "bulbasaur", "eevee", "scyther"];
+    var pokemon = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartotle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "eevee"];
     var docUserGuess = document.getElementById("user-guess"); //used to display the user guess
     var docPokemonDisplay = document.getElementById("word-display") //used to display the pokemon
     var guessLog = document.getElementById("guess-log");
@@ -40,7 +40,7 @@
 
     //if (loserCounter === 0) {
       
-      var pokeRan = Math.floor(Math.random() * 5); //randomizes a number between 0 and 4 to select a certain pokemon
+      var pokeRan = Math.floor(Math.random() * pokemon.length); //randomizes a number between 0 and 4 to select a certain pokemon
 
       var pokemonWord = pokemon[pokeRan];
       console.log(pokemonWord);
@@ -63,7 +63,7 @@
       console.log(pokemonDisplay.join(""));
       if (loserCounter === 0 || pokemonDisplay.join("") === pokemonWord) {
       
-        var pokeRan = Math.floor(Math.random() * 5); //randomizes a number between 0 and 4 to select a certain pokemon
+        var pokeRan = Math.floor(Math.random() * pokemon.length); //randomizes a number between 0 and 4 to select a certain pokemon
         console.log("random " + pokeRan);
 
         pokemonWord = pokemon[pokeRan];
