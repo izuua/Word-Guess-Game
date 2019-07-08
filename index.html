@@ -11,6 +11,8 @@
 
 <body>
   <div class="container">
+    <!-- <img src="assets/2880px-International_Pokémon_logo.svg.png" alt="Pokemon"> --> 
+    <!-- image to be added-->
     <h1>Guess that pokemon!</h1>
 
     <h2>Type in a letter to guess the pokemon</h2>
@@ -25,14 +27,14 @@
   </div>
 
   <script>
-    var pokemon = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartotle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "eevee"];
+    var pokemon = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartotle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "nidoran", "nidorina", "nidoqueen", "nidoran", "nidorino", "nidoking", "clefairy", "clefable", "vulpix", "ninetails", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parsect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton", "farfetch'd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak", "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "mr.mime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
     var docUserGuess = document.getElementById("user-guess"); //used to display the user guess
     var docPokemonDisplay = document.getElementById("word-display") //used to display the pokemon
     var guessLog = document.getElementById("guess-log");
     var guessRemain = document.getElementById("guess-remain");
     var userGuess = []; //used to log user guesses
     var pokemonDisplay = [] //used to create the _ string to be displayed
-    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ".", "'"];
     var stringCheck = false;
     var guessDup = false; //guessDup set to false
     var loserCounter = 0; //loserCounter set to 7 at start
@@ -43,7 +45,7 @@
       var pokeRan = Math.floor(Math.random() * pokemon.length); //randomizes a number between 0 and 4 to select a certain pokemon
 
       var pokemonWord = pokemon[pokeRan];
-      console.log(pokemonWord);
+      console.log("pokemon: " + pokemonWord);
       
       for (var i = 0; i < pokemonWord.length; i++) { //adds a _ for each letter in the pokemon name
         pokemonDisplay.push("_");
@@ -67,7 +69,7 @@
         console.log("random " + pokeRan);
 
         pokemonWord = pokemon[pokeRan];
-        console.log("pokemon" + pokemonWord);
+        console.log("pokemon: " + pokemonWord);
         
         pokemonDisplay = [];
         userGuess = [];
