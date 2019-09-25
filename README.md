@@ -1,2 +1,2 @@
 # Word-Guess-Game
-A simple word guessing game.
+A simple Pokemon guessing game.
