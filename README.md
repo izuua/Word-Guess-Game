@@ -1,4 +1,4 @@
-# Word-Guess-Game
+# Pokemon Guess Game
 A simple Pokemon guessing game.
 
 # Instructions
