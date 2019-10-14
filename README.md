@@ -1,4 +1,4 @@
-# Pokemon Guess Game
+# Pokemon Hangman Game
 A simple Pokemon guessing game.
 
 # Instructions
