@@ -13,7 +13,7 @@ var pokemonWord;
 
 //if (loserCounter === 0) {
   
-  var pokeRan = Math.floor(Math.random() * pokemon.length); //randomizes a number between 0 and 4 to select a certain pokemon
+  var pokeRan = Math.floor(Math.random() * pokemon.length); //randomizes a number between 0 and 151 to select a certain pokemon
 
   var pokemonWord = pokemon[pokeRan];
   console.log("pokemon: " + pokemonWord);
