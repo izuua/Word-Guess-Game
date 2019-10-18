@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     overflow: auto;
-    font-size: 50px;
+    font-size: 35px;
 }
 
 .container {
@@ -13,4 +13,8 @@
     font-family: 'Luckiest Guy', cursive;
     font-size: 20px;
     text-align: center;
+}
+
+.img {
+    width: 300 px;
 }
