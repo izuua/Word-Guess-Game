@@ -9,12 +9,12 @@
     display: block;
     float: none;
     position: relative;
-    width: 700px;
+    /* width: 40vw; */
     font-family: 'Luckiest Guy', cursive;
     font-size: 20px;
     text-align: center;
 }
 
 img {
-    width: 20vw;
+    width: 300px;
 }
